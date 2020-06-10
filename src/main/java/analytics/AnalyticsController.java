@@ -39,6 +39,27 @@ public class AnalyticsController {
     }
 
     @GET
+    @Path("getRealTimeGates")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRealTimeGates() {
+        String message = "";
+        Response.Status status;
+        try {
+            message = analyticsRepository.getRealTimeGates();
+            if(message.isEmpty())
+                throw new WebApplicationException(Response.Status.NOT_FOUND);
+            status = Response.Status.OK;
+        } catch (Exception e) {
+            logger.error("Unexpected error", e);
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
+        return Response
+                .status(status)
+                .entity(message)
+                .build();
+    }
+
+    @GET
     @Path("getSp500")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSp500() {

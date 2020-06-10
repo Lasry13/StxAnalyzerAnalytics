@@ -34,10 +34,9 @@ public class Utils {
                             objectNode.put(column_name, rs.getLong(column_name));
                             break;
                         case "FLOAT":
+                        case "DOUBLE":
                             objectNode.put(column_name, rs.getFloat(column_name));
                             break;
-                        case "DOUBLE":
-                            objectNode.put(column_name, Double.valueOf(rs.getDouble(column_name)));
                         case "TEXT": {
                             objectNode.put(column_name, rs.getString(column_name));
                             break;

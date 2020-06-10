@@ -25,6 +25,12 @@ public class MySqlConnector {
         connection = DriverManager.getConnection(DATABASE_URL, getProperties());
     }
 
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName(DATABASE_DRIVER);
+        connection = DriverManager.getConnection(DATABASE_URL, getProperties());
+        return connection;
+    }
+
     public ResultSet query(String sql) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(sql);
         return statement.executeQuery(sql);

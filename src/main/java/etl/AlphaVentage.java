@@ -26,7 +26,7 @@ public class AlphaVentage {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-+
+
     public String getResponseFromAlpha() throws IOException {
         URL obj = new URL(getUrlForRequest());
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
